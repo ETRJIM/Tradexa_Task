@@ -44,8 +44,6 @@ class PostsUpdateView(LoginRequiredMixin,UpdateView):
         post.save()
         return HttpResponseRedirect(self.success_url)
 
-    
-
 class PostsDeleteView(LoginRequiredMixin,DeleteView):
     model = Posts
     success_url = reverse_lazy('posts_list')
