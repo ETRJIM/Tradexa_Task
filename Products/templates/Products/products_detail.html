@@ -1,0 +1,17 @@
+{% extends 'Products/base.html' %}
+{% block content %}
+    <h2 class = "posttitle loader">{{ product.name}}</h2>
+    <h4 class='postcontent'>Weight : {{ product.weight}} KG</h4>
+    <h4 class='postcontent'>Price : {{ product.price}} INR</h4>
+    <p>Created on: {{ product.created_at }}</p>
+    <p>Updated on: {{ product.updated_at }}</p>
+    {% if user.is_authenticated %}
+    <a href="{% url 'product_edit' pk=product.pk %}" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil">Edit</span>
+    </a>
+    <a href='{% url "product_delete" pk=product.pk %}' class="btn btn-primary">
+        <span class="glyphicon glyphicon-remove">Delete</span>
+    </a>
+    {% endif %}
+    <hr>
+{% endblock content %}

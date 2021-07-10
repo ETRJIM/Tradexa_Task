@@ -1,0 +1,17 @@
+{% extends 'Products/base.html' %}
+{% block content %}
+<div class="centerstage">
+    <h1>Products</h1>
+    <br>
+    {% if product_list %}
+        {% for product in product_list %}
+            <h3>{{ product.name }}</h3>
+            <a href="{% url 'product_detail' pk=product.pk %}">Click here to view product
+            </a>
+            <br><br>
+        {% endfor %}
+    {% else %}
+        <h2>No products available</h2>
+    {% endif %}
+</div>
+{% endblock content %}

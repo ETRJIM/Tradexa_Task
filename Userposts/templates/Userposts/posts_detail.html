@@ -1,0 +1,17 @@
+{% extends 'Userposts/base.html' %}
+{% block content %}
+    <h4 class = "posttitle loader">{{ posts.user.first_name}} {{posts.user.last_name}}</h4>
+    <p class='postcontent'>{{ posts.text|safe|linebreaksbr}}</p>
+    <p>Connect here: <span style="text-decoration:underline;">{{ posts.user.email }}</span></p>
+    {% if user.is_authenticated and posts.user == user%}
+    
+    <a href="{% url 'posts_edit' pk=posts.pk %}" class="btn btn-primary">
+        <span class="glyphicon glyphicon-pencil">Edit</span>
+    </a>
+
+    <a href='{% url "posts_delete" pk=posts.pk %}' class="btn btn-primary">
+        <span class="glyphicon glyphicon-remove">Delete</span>
+    </a>
+    {% endif %}
+    <hr>
+{% endblock content %}

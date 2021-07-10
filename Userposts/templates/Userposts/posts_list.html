@@ -1,0 +1,25 @@
+{% extends 'Userposts/base.html' %}
+{% block content %}
+<div class="centerstage">
+    <h1>Posts</h1>
+    <br>
+    {% if posts_list %}
+        {% for post in posts_list %}
+        <h4 class="card-title">Posted by: {{ post.user.first_name }} {{post.user.last_name}}</h4>
+        <h6 class="card-subtitle mb-2 text-muted">  Email: {{post.user.email}}</h6>
+        <p class="card-text">{{post.text }}</p>
+        <p>Created on: {{ post.created_at}}</p>
+        <p>Updated on: {{ post.updated_at}}</p>
+        <a href="{% url 'posts_detail' pk=post.pk %}" class="card-link">Click here to view post</a>
+            <!-- <h3>Author: {{ post.user.first_name }} {{post.user.last_name}}</34>
+            <p>Created on: {{ post.created_at}}</p>
+            <p>Updated on: {{ post.updated_at}}</p>
+            <a href="{% url 'posts_detail' pk=post.pk %}">Click here to view post
+            </a> -->
+          <br><br>
+        {% endfor %}
+    {% else %}
+        <h2>No posts available</h2>
+    {% endif %}
+</div>
+{% endblock content %}
